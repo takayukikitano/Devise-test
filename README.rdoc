@@ -257,9 +257,11 @@ app/views/layouts/application.html.erb
 
  config.i18n.default_locale = :ja
  
-2 app/congig/locales/ 以下にhttps://gist.github.com/yhara/606476からダウンロードしたdevise.ja.ymlを配置する。
+2 app/congig/locales/ 以下に下記URLからダウンロードしたdevise.ja.ymlを配置する。
 
-3 一部不足しているエラーメッセージを追加
+https://gist.github.com/yhara/606476
+
+3 一部不足しているエラーメッセージの追加例
 
       not_saved:
         one: "１つのエラーがあります。修正して再度送信して下さい。:"
