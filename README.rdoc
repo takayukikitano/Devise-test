@@ -1,14 +1,14 @@
-## README
+== README
 
 Devise インストールまとめ
 
 https://github.com/plataformatec/devise
 
-### Devise wiki
+=== Devise wiki
 
 https://github.com/plataformatec/devise/wiki
 
-### インストール方法
+=== インストール方法
 
 ```
 gem 'devise'
