@@ -12,9 +12,7 @@ https://github.com/plataformatec/devise/wiki
 
 === インストール方法
 
-`
-gem 'devise'
-`
+ `gem 'devise'`
 
-`bundle install`
+ `bundle install`
 
