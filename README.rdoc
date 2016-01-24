@@ -2,6 +2,8 @@
 
 Devise インストールまとめ
 
+=== 公式Githubリポジトリ
+
 https://github.com/plataformatec/devise
 
 === Devise wiki
@@ -10,11 +12,9 @@ https://github.com/plataformatec/devise/wiki
 
 === インストール方法
 
-```
+`
 gem 'devise'
-```
+`
 
-```
-bundle install
-```
+`bundle install`
 
