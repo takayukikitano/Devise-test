@@ -16,19 +16,75 @@ gemfileに以下を記述
 
  gem 'devise'
  
-ターミナルで以下を実行
+ターミナルで以下を実行しインストール
 
  bundle install
+ 
+devise関連のファイルを追加インストールする
+
+ rails g devise:install
+
+※５つのstepが表示されるので順番に消化
+
+1 config/environments/development.rbに以下を追加
+
+ config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+2 root_urlの指定。
+
+3 app/views/layouts/application.html.erb へflashメッセージを設定。
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+4 Rails3.2用の設定なのでrails4では不要
+
+5 Deviseの見た目をカスタマイズするためのview郡を生成
+
+ rails g devise:views
+
+以下のview群ができあがる。
+
+app/views/devise/shared/_links.html.erb (リンク用パーシャル)
+
+app/views/devise/confirmations/new.html.erb (認証メールの再送信画面)
+
+app/views/devise/passwords/edit.html.erb (パスワード変更画面)
+
+app/views/devise/passwords/new.html.erb (パスワードを忘れの際、メールを送る画面)
+
+app/views/devise/registrations/edit.html.erb (ユーザー情報変更画面)
+
+app/views/devise/registrations/new.html.erb (ユーザー登録画面)
+
+app/views/devise/sessions/new.html.erb (ログイン画面)
+
+app/views/devise/unlocks/new.html.erb (ロック解除メール再送信画面)
+
+app/views/devise/mailer/confirmation_instructions.html.erb (メール用アカウント認証文)
+
+app/views/devise/mailer/reset_password_instructions.html.erb (メール用パスワードリセット文)
+
+app/views/devise/mailer/unlock_instructions.html.erb (メール用ロック解除文)
 
 == 10個のモジュールについて
 
 Database Authenticatable: データベースへ暗号化されたパスワードで保存し、これを用いた認証をする
+
 Omniauthable: OmniAuth（https://github.com/intridea/omniauth）を使用できます。ソーシャルログイン
+
 Confirmable: 認証メールを再送信する
+
 Recoverable: パスワードをリセットし、それを通知します。
+
 Registerable: 登録処理を通してユーザーをサインアップします。また、ユーザーに自身のアカウントを編集したり削除することを許可します
+
 Rememberable: 保存されたcookieから、ユーザーを記憶するためのトークンを生成・削除します。
+
 Trackable: サインイン回数や、サインイン時間、IPアドレスを記録します。
+
 Timeoutable: 一定時間活動していないアカウントのセッションを破棄します。
+
 Validatable: Emailやパスワードのバリデーションを提供します。独自に定義したバリデーションを追加することもできます。
+
 Lockable: 一定回数サインインを失敗するとアカウントをロックします。ロック解除にはメールによる解除か、一定時間経つと解除するといった方法があります。
