@@ -223,16 +223,17 @@ app/views/layouts/application.html.erb
       <nav>
         <!-- ログインしている場合はユーザー情報編集とログアウトボタンを表示 -->
         <% if user_signed_in? %> 
-
-          ログイン中です。 <strong><%= current_user.email %></strong>.
+    
+          <strong><%= current_user.email %></strong>でログイン中です。 
+          <%= link_to 'TOP', root_path %> | 
           <%= link_to 'ユーザー情報編集', edit_user_registration_path %> |
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
         
         <!-- ログインしていない場合は登録ボタンとログインボタンを表示 -->
         <% else %>
         
-          <%= link_to "ユーザー登録", new_user_registration_path %> |
-          <%= link_to "ログイン", new_user_session_path %>
+          <%= link_to 'ユーザー登録', new_user_registration_path %> |
+          <%= link_to 'ログイン', new_user_session_path %>
         
         <% end %>
       </nav>
@@ -245,3 +246,32 @@ app/views/layouts/application.html.erb
     
     </body>
     </html>
+    
+== i18nによる日本語化
+
+1 app/config/application.rb を修正
+
+ #config.i18n.default_locale = :de
+
+とコメントアウトされている部分を変更
+
+ config.i18n.default_locale = :ja
+ 
+2 app/congig/locales/ 以下にhttps://gist.github.com/yhara/606476からダウンロードしたdevise.ja.ymlを配置する。
+
+3 一部不足しているエラーメッセージを追加
+
+      not_saved:
+        one: "１つのエラーがあります。修正して再度送信して下さい。:"
+        other: "%{count}のエラーがあります。修正して再度送信して下さい。"
+      taken: "は既に使用されています。"
+      blank: "が入力されていません。"
+      too_short: "は%{count}文字以上に設定して下さい。"
+      too_long: "は%{count}文字以下に設定して下さい。"
+      invalid: "は有効でありません。"
+      confirmation: "が内容とあっていません。"
+
+※yamlファイルは2インデントとなり、インデントがおかしい場合はエラーになる。
+
+4 サーバが起動中の場合は再起動させる。
+

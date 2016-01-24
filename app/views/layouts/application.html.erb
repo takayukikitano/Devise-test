@@ -7,9 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<header>
+  <nav>
+    <!-- ログインしている場合はユーザー情報編集とログアウトボタンを表示 -->
+    <% if user_signed_in? %> 
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+      <strong><%= current_user.email %></strong>でログイン中です。 
+      <%= link_to 'TOP', root_path %> | 
+      <%= link_to 'ユーザー情報編集', edit_user_registration_path %> |
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+    
+    <!-- ログインしていない場合は登録ボタンとログインボタンを表示 -->
+    <% else %>
+    
+      <%= link_to 'ユーザー登録', new_user_registration_path %> |
+      <%= link_to 'ログイン', new_user_session_path %>
+    
+    <% end %>
+  </nav>
+</header>
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 
 <%= yield %>
 
