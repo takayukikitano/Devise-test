@@ -12,7 +12,23 @@ https://github.com/plataformatec/devise/wiki
 
 === インストール方法
 
- `gem 'devise'`
+gemfileに以下を記述
 
- `bundle install`
+ gem 'devise'
+ 
+ターミナルで以下を実行
 
+ bundle install
+
+== 10個のモジュールについて
+
+Database Authenticatable: データベースへ暗号化されたパスワードで保存し、これを用いた認証をする
+Omniauthable: OmniAuth（https://github.com/intridea/omniauth）を使用できます。ソーシャルログイン
+Confirmable: 認証メールを再送信する
+Recoverable: パスワードをリセットし、それを通知します。
+Registerable: 登録処理を通してユーザーをサインアップします。また、ユーザーに自身のアカウントを編集したり削除することを許可します
+Rememberable: 保存されたcookieから、ユーザーを記憶するためのトークンを生成・削除します。
+Trackable: サインイン回数や、サインイン時間、IPアドレスを記録します。
+Timeoutable: 一定時間活動していないアカウントのセッションを破棄します。
+Validatable: Emailやパスワードのバリデーションを提供します。独自に定義したバリデーションを追加することもできます。
+Lockable: 一定回数サインインを失敗するとアカウントをロックします。ロック解除にはメールによる解除か、一定時間経つと解除するといった方法があります。
